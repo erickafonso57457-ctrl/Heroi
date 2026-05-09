@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>As Crônicas do Herói da Floresta</title>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+radial-gradient(circle at center,
+#5a3c2b 0%,
+#24160f 45%,
+#090606 100%);
+
+font-family:'Special Elite',cursive;
+
+user-select:none;
+-webkit-user-select:none;
+}
+
+/* FUNDO */
+
+body::before{
+content:'';
+position:absolute;
+inset:0;
+
+background:
+repeating-linear-gradient(
+90deg,
+rgba(255,255,255,0.015) 0px,
+rgba(255,255,255,0.015) 3px,
+transparent 3px,
+transparent 160px
+);
+
+opacity:0.25;
+filter:blur(1px);
+}
+
+/* LOMBADA */
+
+body::after{
+content:'';
+
+position:absolute;
+
+width:100px;
+height:920px;
+
+left:50%;
+
+transform:
+translateX(-50%)
+rotate(-4deg);
+
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,0.55),
+rgba(255,255,255,0.03),
+rgba(0,0,0,0.65)
+);
+
+filter:blur(2px);
+
+opacity:0.45;
+
+pointer-events:none;
+}
+
+/* LIVRO */
+
+#book{
+
+width:1100px;
+height:920px;
+
+transform:
+perspective(2400px)
+rotateX(10deg)
+rotateZ(-4deg);
+
+filter:
+drop-shadow(0 60px 50px rgba(0,0,0,0.9));
+
+}
+
+/* PAGINAS */
+
+.page{
+
+background:#fff;
+
+position:relative;
+
+overflow:hidden;
+
+padding:38px;
+
+box-shadow:
+inset 0 0 40px rgba(0,0,0,0.08),
+0 0 3px rgba(0,0,0,0.15);
+
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+
+transform-style:preserve-3d;
+-webkit-transform-style:preserve-3d;
+
+will-change:transform;
+
+touch-action:manipulation;
+
+}
+
+.page *{
+pointer-events:none;
+}
+
+.stf__item{
+
+backface-visibility:hidden !important;
+-webkit-backface-visibility:hidden !important;
+
+transform-style:preserve-3d !important;
+
+will-change:transform;
+
+}
+
+/* PAPEL */
+
+.page::before{
+
+content:'';
+
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+linear-gradient(to bottom,
+rgba(255,255,255,0.7),
+rgba(0,0,0,0.04));
+
+background-size:4px 4px,100% 100%;
+
+opacity:0.45;
+
+pointer-events:none;
+
+}
+
+/* BORDA */
+
+.page::after{
+
+content:'';
+
+position:absolute;
+
+top:0;
+right:0;
+
+width:30px;
+height:100%;
+
+background:
+linear-gradient(
+to left,
+rgba(0,0,0,0.12),
+transparent
+);
+
+pointer-events:none;
+
+}
+
+/* CAPA */
+
+.cover{
+
+background:
+linear-gradient(
+135deg,
+#593727,
+#2a1710 60%,
+#140906
+);
+
+color:#e2d9cf;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+border:5px solid rgba(180,180,180,0.18);
+
+}
+
+/* COURO */
+
+.cover::before{
+
+content:'';
+
+position:absolute;
+inset:0;
+
+background:
+
+repeating-linear-gradient(
+90deg,
+rgba(180,180,180,0.12) 0px,
+rgba(180,180,180,0.12) 2px,
+transparent 2px,
+transparent 18px
+),
+
+radial-gradient(
+rgba(255,255,255,0.03) 1px,
+transparent 1px
+);
+
+background-size:
+100% 100%,
+6px 6px;
+
+mix-blend-mode:screen;
+
+}
+
+/* SIGILOS */
+
+.cover::after{
+
+content:'☿ ✶ ᚱ ⟁ ☽ ᚨ';
+
+position:absolute;
+
+top:26px;
+
+font-size:25px;
+
+letter-spacing:18px;
+
+opacity:0.35;
+
+}
+
+/* TITULO */
+
+.cover h1{
+
+font-family:'Cinzel',serif;
+
+font-size:52px;
+
+line-height:1.4;
+
+text-shadow:
+0 0 25px rgba(255,255,255,0.08);
+
+z-index:2;
+
+}
+
+/* CAPITULOS */
+
+.chapter{
+
+font-family:'Cinzel',serif;
+
+font-size:26px;
+
+text-align:center;
+
+margin-bottom:22px;
+
+color:#29160f;
+
+}
+
+/* SIMBOLOS */
+
+.symbol{
+
+margin-top:8px;
+
+font-size:18px;
+
+letter-spacing:10px;
+
+}
+
+.success{
+color:#2e6d2e;
+}
+
+.fail{
+color:#7d1212;
+}
+
+/* TEXTO */
+
+.content{
+
+white-space:pre-line;
+
+font-size:14px;
+
+line-height:1.55;
+
+color:#23140d;
+
+}
+
+/* PAGINA RASGADA */
+
+.torn{
+background:#fff;
+}
+
+.torn .tear{
+
+position:absolute;
+
+left:42%;
+top:-10%;
+
+width:220px;
+height:130%;
+
+background:#090909;
+
+clip-path:polygon(
+48% 0%,
+58% 7%,
+52% 14%,
+67% 22%,
+55% 32%,
+70% 42%,
+56% 52%,
+69% 63%,
+55% 75%,
+66% 87%,
+49% 100%,
+35% 92%,
+45% 82%,
+31% 70%,
+44% 60%,
+28% 50%,
+43% 40%,
+31% 28%,
+47% 16%,
+34% 7%
+);
+
+filter:blur(0.4px);
+
+}
+
+/* PAGINA SANGUE */
+
+.blood{
+background:#fff;
+}
+
+.blood .blood-overlay{
+
+position:absolute;
+inset:0;
+
+background:
+
+radial-gradient(circle at 15% 20%,
+rgba(120,0,0,0.95) 0 100px,
+transparent 115px),
+
+radial-gradient(circle at 78% 40%,
+rgba(80,0,0,0.92) 0 140px,
+transparent 155px),
+
+radial-gradient(circle at 50% 80%,
+rgba(140,0,0,0.75) 0 90px,
+transparent 110px),
+
+linear-gradient(
+to bottom,
+transparent,
+rgba(70,0,0,0.08)
+);
+
+mix-blend-mode:multiply;
+
+pointer-events:none;
+
+}
+
+.corrupted{
+opacity:0.9;
+letter-spacing:1px;
+}
+
+/* GLITCH */
+
+.glitch{
+
+animation:pagebreak 0.15s infinite alternate;
+
+pointer-events:none;
+
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+
+transform:translateZ(0);
+
+}
+
+.glitch::before{
+
+content:'';
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+transparent,
+rgba(255,255,255,0.05),
+transparent
+);
+
+animation:flicker 0.12s infinite;
+
+pointer-events:none;
+
+}
+
+.glitch .content{
+animation:textbreak 0.08s infinite alternate;
+}
+
+@keyframes pagebreak{
+
+0%{filter:blur(0px);}
+25%{filter:blur(0.3px);}
+50%{filter:brightness(1.1);}
+75%{filter:contrast(1.15);}
+100%{filter:blur(0.2px);}
+
+}
+
+@keyframes textbreak{
+
+0%{opacity:1;}
+50%{opacity:0.55;}
+100%{opacity:1;}
+
+}
+
+@keyframes flicker{
+
+0%{opacity:0.1;}
+50%{opacity:0.45;}
+100%{opacity:0.1;}
+
+}
+
+/* DICA */
+
+.hint{
+
+position:fixed;
+
+bottom:18px;
+
+color:#d6c7b9;
+
+font-size:12px;
+
+letter-spacing:2px;
+
+opacity:0.7;
+
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+#book{
+
+width:96vw;
+height:92vh;
+
+transform:
+perspective(1400px)
+rotateX(5deg)
+rotateZ(-2deg);
+
+}
+
+.page{
+padding:24px;
+}
+
+.chapter{
+font-size:20px;
+}
+
+.content{
+font-size:12px;
+line-height:1.45;
+}
+
+.cover h1{
+font-size:34px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="book">
+
+<div class="page cover">
+<h1>
+As Crônicas<br>
+do Herói da Floresta
+</h1>
+</div>
+
+<!-- SUAS PÁGINAS CONTINUAM AQUI EXATAMENTE COMO ESTAVAM -->
+<!-- CAPA -->  <div class="page cover">  <h1>
+As Crônicas<br>
+do Herói da Floresta
+
+</h1>  </div>  <!-- PAGINA 1 -->  <div class="page">  <div class="chapter">    
+O herói vem a esse mundo    
+<div class="symbol success">✦ ✦ ✦</div>    
+</div>  <div class="content">    
+Início aos testes, vamos submeter o herói ao começo de seus testes, as 10 horas em ponto começaremos o seu primeiro ritual de transcendência, o colocamos em quarentena numa sala de duas guias com um zumbi de sangue, após 3 dias o herói finalmente entrou em estado de choque anafilático, consideramos isso quase como uma resistência natural o medo que ele tinha sobre a criatura junto de algo que categorizamos como fascínio, o mesmo teste foi repetido durante o mês com mais algumas criaturas. Esqueleto de lodo 7 dias, anárquico 5 dias e houve um reação inesperada com o contato do existido, quando a mente o herói começou a ser deteriorada pelo conhecimento do outro lado, não houve uma resposta ao enlouquecimento como sugere, o herói ficou completamente maravilhado com oque estava vendo e as taxas de manifestação do outro lado dispararam no setor, Encerramos os teste nesse momento para menores baixas e começaremos no dia seguinte a transcendência.    
+</div>  </div>  <!-- PAGINA 2 -->  <div class="page">  <div class="chapter">    
+O herói e sua espada sagrada    
+<div class="symbol fail">☩ ☩ ☩</div>    
+</div>  <div class="content">    
+Após uma tarde de descanso do herói, diminuímos a taxa de tensão dele aí máximo que acumulou após os últimos testes, usaremos um círculo pequeno de transcendência que um dos agentes iron veio aqui e desenhou.  Colocamos o herói sobre o círculo e usamos drogas para aumentar a taxa de concentração dele junto de um analgésico para fazê-lo chegar perto do estado de adormecimento, mas, os testes falharam, a pressão da cobaia foi ao extremo contrariando completamente a baixa taxa cardíaca que estava diminuindo cada vez mais do mesmo, retiramos do meio do círculo as pressas, mas já era tarde demais, as veias do heitor estouraram e seus olhos se tornaram líquido negro.  </div>  </div>  <!-- PAGINA 3 -->  <div class="page">  <div class="chapter">    
+O herói e a benção divina    
+<div class="symbol success">✦ ✦ ✦</div>    
+</div>  <div class="content">    
+Após o último acidente, tentamos ao máximo estabiliza-lo, usamos algumas drogas que iron nos disponibilizou, se chama rubra isso deu ao heroi a capacidade de suportar a provação até ser colocado na Câmara sobrevida, seu corpo é apenas um embaranhado de carne com partes do cérebro dele vazando pelo buraco dos olhos, entretanto os sinais vitais dele estão estáveis de alguma forma ele ainda está vivo.  8 horas depois do teste uma ocultista dos irons veio até nisso laboratório, ela invocou sigilos de conhecimento segurando uma barra de ouro e então o corpo do herói foi reconstruído, esses rituais são divinos de se ver funcionando eu diria e com isso temos uma certeza agora não precisamos se preocupar mais com o herói, com uma deusa ao nosso lado se apenas restar um fio de vida no corpo dele, vamos puxar esse fio novamente denovo e denovo até ele ficar completo.  </div>  </div>  <!-- PAGINA RASGADA -->  <div class="page torn">    
+<div class="tear"></div>    
+</div>  <!-- PAGINA SANGUE -->  <div class="page blood">  <div class="blood-overlay"></div>  <div class="chapter">    
+O h i demon ataca a v    
+<div class="symbol fail">☩ ☩</div>    
+</div>  <div class="content corrupted">    
+A contenção do zumbi de sangue de al  A tripas da assistente estão sendo comidas nesse momento eu prec  Caso encontre esse caderno os experimentos podem con
+
+Isso é maravilhoso, o herói está parado na frente do zumbi de sangue, olhando diretamente para ele, isso é lindo de se ver, o zumbi está se curvando de alguma forma e virando sangue novamente.
+
+</div>  </div>  <!-- PAGINA 6 -->  <div class="page">  <div class="chapter">    
+O treino do herói    
+<div class="symbol success">✦ ✦ ✦</div>    
+</div>  <div class="content">    
+Decidimos que não podemos mais continuar com o testes de exposição paranormal por criaturas, a membrana tem estado tão instável nesse local e nossos sistemas de segurança estavam falhando todo santo dia, só sobrou eu e minha esposa após a última quebra, no começo desse dia alguma agentes da iron vieram aqui para levar as criaturas embora, mas a cobaia herói ficou completamente instável quando eles saíram da instalação, o colocamos na Câmara sobre vida novamente, continuamos os testes de novas formas, estamos sintetizando algumas peculiaridades paranormais em seu corpo, o genoma dele é muito propenso a aceitar mudanças elementais.    
+</div>  </div>  <!-- PAGINA 7 -->  <div class="page">  <div class="chapter">    
+O herói no Reino demoníaco    
+<div class="symbol success">✦ ✦ ✦</div>    
+</div>  <div class="content">    
+Eureka, após as sínteses e próteses conseguimos estabilizar a mente que havia deteriorando dele, um pequeno fluxo tenebroso está brotando de seu peito, um pequeno circulo de névoa foi aparente por 7 segundos no começo dos testes, isso é um avanço inimaginável, ele voltou a brincar e interagir com seus materiais de estudos como se não tivesse acontecido nada demais, também tem aceitado os testes de forma mais positiva e sem reclamações, a cientista Charlotte insiste que devemos continua-lo a dar esses momentos de criança para podermos controla-lo, discordo disso mas, acho que isso só atrasa o projeto, entretanto não vou impedir ela afinal não posso perder a confiança da cobaia nesse momento.    
+</div>  </div>  <!-- PAGINA GLITCH -->  <div class="page glitch">  <div class="chapter">    
+...    
+</div>  <div class="content">    
+A página está tremendo, quase indescritível, parece que ela foi perdia no tempo e só um receptáculo dela ficou sem dar a capacidade de ler.    
+</div>  </div>  <!-- PAGINA FINAL -->  <div class="page">  <div class="chapter">    
+O herói derrota o rei demônio    
+<div class="symbol fail">☩ ☩ ☩</div>    
+</div>  <div class="content">    
+Hoje é o último dia, o cúmulo do que anos de meu aprendizado e 4 anos de experimentos árduos me proporcionou, vamos entrar na sala de transcendência junto dos cirurgiões, bem é aqui que eu termino esse livro idiota, se não fosse para aquele fedelho ter alguma coisa para achar que eu importava com ele eu sequer teria escrevido essa merda, mas do que importa? Tudo acaba hoje, vamos entrar daqui a 17 minutos, acho que até que gostei de escrever, talvez eu comece a escrever alguma pesquisas por hobby após isso.    
+</div>  </div>  <!-- FIM -->  <div class="page cover">  <h1>    Qual parte disso é só o conteúdo do livro?
+  
+</div>
+
+<div class="hint">
+Arraste as páginas para interagir
+</div>
+
+<script>
+
+const pageFlip = new St.PageFlip(
+
+document.getElementById("book"),
+
+{
+
+width:620,
+height:920,
+
+size:"stretch",
+
+minWidth:315,
+maxWidth:1800,
+
+minHeight:420,
+maxHeight:2200,
+
+showCover:true,
+
+mobileScrollSupport:true,
+
+swipeDistance:30,
+
+maxShadowOpacity:0.8,
+
+flippingTime:700,
+
+usePortrait:true,
+
+autoSize:true,
+
+drawShadow:true,
+
+startPage:0,
+
+clickEventForward:false,
+
+useMouseEvents:false,
+
+showPageCorners:false,
+
+disableFlipByClick:false,
+
+}
+
+);
+
+pageFlip.loadFromHTML(
+document.querySelectorAll(".page")
+);
+
+/* ESTABILIZA TOUCH MOBILE */
+
+document.addEventListener(
+'touchstart',
+function(){},
+{passive:true}
+);
+
+/* CORRIGE PAGINAS MORRENDO */
+
+pageFlip.on('flip', () => {
+
+document.querySelectorAll('.stf__item').forEach(el => {
+
+el.style.pointerEvents = 'auto';
+
+el.style.backfaceVisibility = 'hidden';
+
+el.style.webkitBackfaceVisibility = 'hidden';
+
+el.style.transformStyle = 'preserve-3d';
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
