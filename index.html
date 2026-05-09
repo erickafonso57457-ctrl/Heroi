@@ -6,6 +6,10 @@
 
 <title>As Crônicas do Herói da Floresta</title>
 
+<!-- PAGE FLIP -->
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<!-- FONTES -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
 
 <style>
@@ -19,6 +23,7 @@ box-sizing:border-box;
 body{
 height:100vh;
 overflow:hidden;
+
 display:flex;
 justify-content:center;
 align-items:center;
@@ -30,10 +35,9 @@ radial-gradient(circle at center,
 #090606 100%);
 
 font-family:'Special Elite',cursive;
-perspective:2000px;
 }
 
-/* Fundo */
+/* FUNDO */
 
 body::before{
 content:'';
@@ -55,9 +59,12 @@ filter:blur(1px);
 
 body::after{
 content:'';
+
 position:absolute;
+
 width:100px;
 height:920px;
+
 left:50%;
 
 transform:
@@ -73,24 +80,31 @@ rgba(0,0,0,0.65)
 );
 
 filter:blur(2px);
+
 opacity:0.45;
+
 pointer-events:none;
 }
 
-/* Livro */
+/* LIVRO */
 
 #book{
 width:1100px;
-height:720px;
-margin:auto;
+height:920px;
+
+filter:
+drop-shadow(0 60px 50px rgba(0,0,0,0.9));
 }
 
-/* Página */
+/* PÁGINAS */
 
 .page{
 background:#fff;
+
 position:relative;
+
 overflow:hidden;
+
 padding:38px;
 
 box-shadow:
@@ -101,40 +115,39 @@ backface-visibility:hidden;
 -webkit-backface-visibility:hidden;
 
 will-change:transform;
-
-touch-action:manipulation;
 }
 
-#book .page{
-width:550px;
-height:720px;
-}
-
-.turn-page{
-background-color:#fff;
-}
+/* TEXTURA */
 
 .page::before{
 content:'';
+
 position:absolute;
 inset:0;
 
 background:
 radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-linear-gradient(to bottom,
+linear-gradient(
+to bottom,
 rgba(255,255,255,0.7),
-rgba(0,0,0,0.04));
+rgba(0,0,0,0.04)
+);
 
 background-size:4px 4px,100% 100%;
+
 opacity:0.45;
+
 pointer-events:none;
 }
 
 .page::after{
 content:'';
+
 position:absolute;
+
 top:0;
 right:0;
+
 width:30px;
 height:100%;
 
@@ -171,6 +184,7 @@ border:5px solid rgba(180,180,180,0.18);
 
 .cover::before{
 content:'';
+
 position:absolute;
 inset:0;
 
@@ -189,6 +203,7 @@ transparent 1px
 );
 
 background-size:100% 100%,6px 6px;
+
 mix-blend-mode:screen;
 }
 
@@ -206,6 +221,7 @@ opacity:0.35;
 
 .cover h1{
 font-family:'Cinzel',serif;
+
 font-size:52px;
 line-height:1.4;
 
@@ -215,33 +231,49 @@ text-shadow:
 z-index:2;
 }
 
-/* Conteúdo */
+/* TITULOS */
 
 .chapter{
 font-family:'Cinzel',serif;
+
 font-size:26px;
+
 text-align:center;
+
 margin-bottom:22px;
+
 color:#29160f;
 }
 
 .symbol{
 margin-top:8px;
+
 font-size:18px;
+
 letter-spacing:10px;
 }
 
-.success{ color:#2e6d2e; }
-.fail{ color:#7d1212; }
+.success{
+color:#2e6d2e;
+}
+
+.fail{
+color:#7d1212;
+}
+
+/* TEXTO */
 
 .content{
 white-space:pre-line;
+
 font-size:14px;
+
 line-height:1.55;
+
 color:#23140d;
 }
 
-/* Página rasgada */
+/* PÁGINA RASGADA */
 
 .torn{
 background:
@@ -256,45 +288,64 @@ linear-gradient(
 
 .torn .tear{
 position:absolute;
-left:42%;
-top:0;
-width:16%;
-height:100%;
-background:#0b0404;
 
-clip-path:polygon(
-50% 0%,
-60% 8%,
-40% 17%,
-65% 26%,
-35% 35%,
-70% 45%,
-30% 55%,
-68% 65%,
-40% 74%,
-60% 84%,
-45% 100%,
-70% 100%,
-55% 84%,
-75% 74%,
-45% 65%,
-80% 55%,
-40% 45%,
-75% 35%,
-50% 26%,
-70% 17%,
-45% 8%,
-55% 0%
+left:33%;
+top:-3%;
+
+width:32%;
+height:106%;
+
+background:
+linear-gradient(
+90deg,
+#040101 0%,
+#0b0404 25%,
+#070202 50%,
+#0d0505 75%,
+#040101 100%
 );
 
 filter:
 drop-shadow(-6px 0 14px rgba(0,0,0,0.75))
 drop-shadow(6px 0 10px rgba(0,0,0,0.6));
+
+clip-path:polygon(
+40% 0%,
+43% 4%,
+38% 8%,
+44% 12%,
+39% 18%,
+46% 25%,
+41% 31%,
+49% 38%,
+44% 44%,
+52% 52%,
+46% 58%,
+55% 65%,
+49% 72%,
+58% 80%,
+52% 88%,
+60% 100%,
+
+74% 100%,
+70% 92%,
+77% 84%,
+71% 76%,
+79% 68%,
+73% 60%,
+81% 52%,
+75% 44%,
+83% 36%,
+77% 28%,
+86% 18%,
+80% 10%,
+91% 0%
+);
 }
 
-/* Página sangue */
+/* PÁGINA SANGUE */
 
-.blood .blood-overlay{
+.blood-overlay{
 position:absolute;
 inset:0;
 
@@ -305,23 +356,51 @@ transparent 115px),
 
 radial-gradient(circle at 78% 40%,
 rgba(80,0,0,0.92) 0 140px,
-transparent 155px);
+transparent 155px),
+
+radial-gradient(circle at 50% 80%,
+rgba(140,0,0,0.75) 0 90px,
+transparent 110px);
 
 mix-blend-mode:multiply;
+
 pointer-events:none;
 }
 
-/* Glitch */
+/* GLITCH */
 
 .page.glitch{
 background:#080303 !important;
+
 animation:pagebreak 0.15s infinite alternate;
+
 pointer-events:auto;
+}
+
+.page.glitch::before{
+background:
+repeating-linear-gradient(
+0deg,
+transparent 0px,
+transparent 3px,
+rgba(0,0,0,0.4) 3px,
+rgba(0,0,0,0.4) 4px
+),
+
+radial-gradient(
+ellipse at center,
+rgba(50,8,8,0.35) 0%,
+rgba(0,0,0,0.9) 100%
+);
+
+background-size:100% 4px,100% 100%;
+
+opacity:1;
 }
 
 .page.glitch .chapter,
 .page.glitch .content{
-color:#86685b;
+color:#9a7860;
 
 text-shadow:
 -2px 0 rgba(210,40,40,0.85),
@@ -332,17 +411,19 @@ animation:textbreak 0.08s infinite alternate;
 
 @keyframes textbreak{
 0%{opacity:1;}
-50%{opacity:0.5;}
+50%{opacity:0.45;}
 100%{opacity:1;}
 }
 
 @keyframes pagebreak{
 0%{filter:blur(0px);}
-50%{filter:contrast(1.2);}
-100%{filter:blur(0.3px);}
+25%{filter:blur(0.4px);}
+50%{filter:brightness(0.85);}
+75%{filter:contrast(1.2);}
+100%{filter:blur(0.25px);}
 }
 
-/* Contra capa */
+/* CONTRA CAPA */
 
 .back-cover{
 background:
@@ -374,14 +455,17 @@ height:170px;
 
 border-radius:50%;
 
-border:1px solid rgba(160,110,55,0.35);
+border:1.5px solid rgba(160,110,55,0.35);
 
 display:flex;
 align-items:center;
 justify-content:center;
 
+position:relative;
+
 box-shadow:
 0 0 28px rgba(80,30,8,0.5),
+0 0 60px rgba(40,10,3,0.4),
 inset 0 0 30px rgba(0,0,0,0.7);
 }
 
@@ -389,82 +473,35 @@ inset 0 0 30px rgba(0,0,0,0.7);
 content:'⟁';
 
 font-size:64px;
-font-family:'Cinzel',serif;
 
 color:rgba(160,110,50,0.45);
-}
-
-.back-divider{
-width:140px;
-height:1px;
-
-background:
-linear-gradient(
-to right,
-transparent,
-rgba(180,120,55,0.5),
-transparent
-);
-}
-
-/* Botões */
-
-.nav-btn{
-position:fixed;
-bottom:18px;
-
-background:rgba(80,40,15,0.7);
-
-border:1px solid rgba(180,130,60,0.4);
-
-color:#d6c7b9;
 
 font-family:'Cinzel',serif;
-font-size:13px;
-letter-spacing:2px;
-
-padding:8px 20px;
-
-cursor:pointer;
-
-z-index:100;
-
-transition:0.2s;
 }
 
-.nav-btn:hover{
-background:rgba(120,60,20,0.85);
-}
-
-#btn-prev{
-left:calc(50% - 150px);
-}
-
-#btn-next{
-right:calc(50% - 150px);
-}
+/* DICA */
 
 .hint{
 position:fixed;
-bottom:20px;
+
+bottom:18px;
 
 color:#d6c7b9;
 
 font-size:12px;
+
 letter-spacing:2px;
 
 opacity:0.7;
-
-z-index:100;
 }
 
-/* Mobile */
+/* MOBILE */
 
 @media(max-width:900px){
 
 #book{
 width:96vw;
-height:80vh;
+height:92vh;
 }
 
 .page{
@@ -484,6 +521,15 @@ line-height:1.45;
 font-size:34px;
 }
 
+}
+
+/* PAGEFLIP FIX */
+
+.stf__item{
+backface-visibility:hidden !important;
+-webkit-backface-visibility:hidden !important;
+transform-style:preserve-3d !important;
+will-change:transform;
 }
 
 body{
@@ -506,8 +552,9 @@ do Herói da Floresta
 </h1>
 </div>
 
-<!-- PÁGINA -->
+<!-- PAGINA 1 -->
 <div class="page">
+
 <div class="chapter">
 O herói vem a esse mundo
 <div class="symbol success">✦ ✦ ✦</div>
@@ -516,10 +563,12 @@ O herói vem a esse mundo
 <div class="content">
 Início aos testes, vamos submeter o herói ao começo de seus testes...
 </div>
+
 </div>
 
-<!-- PÁGINA -->
+<!-- PAGINA 2 -->
 <div class="page">
+
 <div class="chapter">
 O herói e sua espada sagrada
 <div class="symbol fail">☩ ☩ ☩</div>
@@ -528,14 +577,31 @@ O herói e sua espada sagrada
 <div class="content">
 Após uma tarde de descanso do herói...
 </div>
+
 </div>
 
-<!-- RASGADA -->
+<!-- PAGINA 3 -->
+<div class="page">
+
+<div class="chapter">
+O herói e a benção divina
+<div class="symbol success">✦ ✦ ✦</div>
+</div>
+
+<div class="content">
+Após o último acidente...
+</div>
+
+</div>
+
+<!-- PAGINA RASGADA -->
 <div class="page torn">
+
 <div class="tear"></div>
+
 </div>
 
-<!-- SANGUE -->
+<!-- PAGINA SANGUE -->
 <div class="page blood">
 
 <div class="blood-overlay"></div>
@@ -551,7 +617,7 @@ A contenção do zumbi de sangue...
 
 </div>
 
-<!-- GLITCH -->
+<!-- PAGINA GLITCH -->
 <div class="page glitch">
 
 <div class="chapter">
@@ -559,7 +625,7 @@ ERRO DE TRANSCENDÊNCIA
 </div>
 
 <div class="content">
-SINAIS DA MEMBRANA CORROMPIDOS...
+A membrana foi rompida.
 </div>
 
 </div>
@@ -571,12 +637,6 @@ SINAIS DA MEMBRANA CORROMPIDOS...
 
 <div class="back-seal"></div>
 
-<div class="back-divider"></div>
-
-<div>
-Classificado — Iron
-</div>
-
 <div>
 Arquivo Encerrado
 </div>
@@ -587,96 +647,54 @@ Arquivo Encerrado
 
 </div>
 
-<button class="nav-btn" id="btn-prev">◀ Anterior</button>
-
 <div class="hint">
-Clique nas bordas do livro
+Clique e arraste as páginas
 </div>
 
-<button class="nav-btn" id="btn-next">
-Próxima ▶
-</button>
-
-<!-- JQUERY PRIMEIRO -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<!-- TURN.JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+<!-- PAGEFLIP -->
 
 <script>
 
-$(document).ready(function(){
+const pageFlip = new St.PageFlip(
 
-const book = $("#book");
+document.getElementById("book"),
 
-/* Inicialização */
+{
+width:550,
+height:920,
 
-book.turn({
+size:"stretch",
 
-width:1100,
-height:720,
+minWidth:315,
+maxWidth:1200,
 
-autoCenter:true,
+minHeight:400,
+maxHeight:1533,
 
-elevation:50,
+showCover:true,
 
-gradients:true,
+mobileScrollSupport:false,
 
-acceleration:true,
+usePortrait:true,
 
-duration:900
+startPage:0,
 
-});
+drawShadow:true,
 
-/* Botões */
+maxShadowOpacity:0.5,
 
-$("#btn-next").click(function(){
-book.turn("next");
-});
+flippingTime:1000,
 
-$("#btn-prev").click(function(){
-book.turn("previous");
-});
-
-/* Teclado */
-
-$(document).keydown(function(e){
-
-if(e.key === "ArrowRight"){
-book.turn("next");
+autoSize:true
 }
 
-if(e.key === "ArrowLeft"){
-book.turn("previous");
-}
-
-});
-
-/* Responsivo */
-
-function resizeBook(){
-
-if(window.innerWidth < 900){
-
-book.turn(
-"size",
-window.innerWidth * 0.96,
-window.innerHeight * 0.80
 );
 
-}else{
+/* CARREGA AS PAGINAS */
 
-book.turn("size",1100,720);
-
-}
-
-}
-
-resizeBook();
-
-window.addEventListener("resize",resizeBook);
-
-});
+pageFlip.loadFromHTML(
+document.querySelectorAll(".page")
+);
 
 </script>
 
