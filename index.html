@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>As Crônicas do Herói da Floresta</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>As Crônicas do Herói da Floresta</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
 
 *{
 margin:0;
@@ -19,26 +22,33 @@ overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
+
 background:
-  radial-gradient(circle at center,
-  #5a3c2b 0%,
-  #24160f 45%,
-  #090606 100%);
+radial-gradient(circle at center,
+#5a3c2b 0%,
+#24160f 45%,
+#090606 100%);
+
 font-family:'Special Elite',cursive;
+perspective:2000px;
 }
+
+/* Fundo */
 
 body::before{
 content:'';
 position:absolute;
 inset:0;
+
 background:
-  repeating-linear-gradient(
-  90deg,
-  rgba(255,255,255,0.015) 0px,
-  rgba(255,255,255,0.015) 3px,
-  transparent 3px,
-  transparent 160px
-  );
+repeating-linear-gradient(
+90deg,
+rgba(255,255,255,0.015) 0px,
+rgba(255,255,255,0.015) 3px,
+transparent 3px,
+transparent 160px
+);
+
 opacity:0.25;
 filter:blur(1px);
 }
@@ -49,52 +59,72 @@ position:absolute;
 width:100px;
 height:920px;
 left:50%;
-transform:translateX(-50%) rotate(-4deg);
+
+transform:
+translateX(-50%)
+rotate(-4deg);
+
 background:
-  linear-gradient(
-  to right,
-  rgba(0,0,0,0.55),
-  rgba(255,255,255,0.03),
-  rgba(0,0,0,0.65)
-  );
+linear-gradient(
+to right,
+rgba(0,0,0,0.55),
+rgba(255,255,255,0.03),
+rgba(0,0,0,0.65)
+);
+
 filter:blur(2px);
 opacity:0.45;
 pointer-events:none;
 }
 
+/* Livro */
+
 #book{
 width:1100px;
 height:720px;
+margin:auto;
 }
 
-/* ---- PageFlip container ---- */
-.stf__parent {
-  perspective: 2400px;
-}
+/* Página */
 
 .page{
 background:#fff;
 position:relative;
 overflow:hidden;
 padding:38px;
+
 box-shadow:
-  inset 0 0 40px rgba(0,0,0,0.08),
-  0 0 3px rgba(0,0,0,0.15);
+inset 0 0 40px rgba(0,0,0,0.08),
+0 0 3px rgba(0,0,0,0.15);
+
 backface-visibility:hidden;
 -webkit-backface-visibility:hidden;
-transform-style:preserve-3d;
--webkit-transform-style:preserve-3d;
+
 will-change:transform;
+
 touch-action:manipulation;
+}
+
+#book .page{
+width:550px;
+height:720px;
+}
+
+.turn-page{
+background-color:#fff;
 }
 
 .page::before{
 content:'';
 position:absolute;
 inset:0;
+
 background:
-  radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-  linear-gradient(to bottom,rgba(255,255,255,0.7),rgba(0,0,0,0.04));
+radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+linear-gradient(to bottom,
+rgba(255,255,255,0.7),
+rgba(0,0,0,0.04));
+
 background-size:4px 4px,100% 100%;
 opacity:0.45;
 pointer-events:none;
@@ -107,23 +137,35 @@ top:0;
 right:0;
 width:30px;
 height:100%;
-background:linear-gradient(to left,rgba(0,0,0,0.12),transparent);
+
+background:
+linear-gradient(
+to left,
+rgba(0,0,0,0.12),
+transparent
+);
+
 pointer-events:none;
 }
 
+/* CAPA */
+
 .cover{
 background:
-  linear-gradient(
-  135deg,
-  #593727,
-  #2a1710 60%,
-  #140906
-  );
+linear-gradient(
+135deg,
+#593727,
+#2a1710 60%,
+#140906
+);
+
 color:#e2d9cf;
+
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
+
 border:5px solid rgba(180,180,180,0.18);
 }
 
@@ -131,25 +173,34 @@ border:5px solid rgba(180,180,180,0.18);
 content:'';
 position:absolute;
 inset:0;
+
 background:
-  repeating-linear-gradient(
-  90deg,
-  rgba(180,180,180,0.12) 0px,
-  rgba(180,180,180,0.12) 2px,
-  transparent 2px,
-  transparent 18px
-  ),
-  radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+repeating-linear-gradient(
+90deg,
+rgba(180,180,180,0.12) 0px,
+rgba(180,180,180,0.12) 2px,
+transparent 2px,
+transparent 18px
+),
+
+radial-gradient(
+rgba(255,255,255,0.03) 1px,
+transparent 1px
+);
+
 background-size:100% 100%,6px 6px;
 mix-blend-mode:screen;
 }
 
 .cover::after{
 content:'☿ ✶ ᚱ ⟁ ☽ ᚨ';
+
 position:absolute;
 top:26px;
+
 font-size:25px;
 letter-spacing:18px;
+
 opacity:0.35;
 }
 
@@ -157,9 +208,14 @@ opacity:0.35;
 font-family:'Cinzel',serif;
 font-size:52px;
 line-height:1.4;
-text-shadow:0 0 25px rgba(255,255,255,0.08);
+
+text-shadow:
+0 0 25px rgba(255,255,255,0.08);
+
 z-index:2;
 }
+
+/* Conteúdo */
 
 .chapter{
 font-family:'Cinzel',serif;
@@ -185,467 +241,249 @@ line-height:1.55;
 color:#23140d;
 }
 
-/* =============================================
-   PÁGINA RASGADA
-   ============================================= */
+/* Página rasgada */
 
 .torn{
 background:
-  linear-gradient(
-  105deg,
-  #ede5c8 0%,
-  #f5edda 35%,
-  #f8f2e2 60%,
-  #ede8d5 100%
-  );
-}
-
-.page.torn::before{
-background:
-  radial-gradient(rgba(100,70,20,0.06) 1px, transparent 1px),
-  linear-gradient(
-    to bottom,
-    rgba(220,190,130,0.15),
-    rgba(150,110,60,0.08) 50%,
-    rgba(180,140,80,0.12)
-  );
-background-size:5px 5px,100% 100%;
-opacity:1;
-}
-
-.page.torn::after{
-width:100%;
-left:0;
-background:
-  radial-gradient(ellipse at 18% 72%, rgba(140,100,40,0.12) 0%, transparent 38%),
-  radial-gradient(ellipse at 82% 25%, rgba(120,90,30,0.08) 0%, transparent 30%);
-pointer-events:none;
+linear-gradient(
+105deg,
+#ede5c8 0%,
+#f5edda 35%,
+#f8f2e2 60%,
+#ede8d5 100%
+);
 }
 
 .torn .tear{
 position:absolute;
-left:33%;
-top:-3%;
-width:32%;
-height:106%;
-
-background:
-  linear-gradient(
-  90deg,
-  #040101 0%,
-  #0b0404 25%,
-  #070202 50%,
-  #0d0505 75%,
-  #040101 100%
-  );
+left:42%;
+top:0;
+width:16%;
+height:100%;
+background:#0b0404;
 
 clip-path:polygon(
-  40% 0%,43% 1.5%,38% 3%,44% 5%,37% 7%,43% 9%,39% 11.5%,45% 13%,
-  38% 15.5%,44% 17%,40% 19%,46% 21%,39% 23%,45% 25.5%,40% 27%,47% 29%,
-  41% 31%,48% 33.5%,42% 35%,49% 37%,43% 39.5%,50% 41%,44% 43%,51% 45.5%,
-  45% 47%,52% 49%,46% 51.5%,53% 53%,47% 55%,54% 57.5%,48% 59%,55% 61%,
-  49% 63.5%,56% 65%,50% 67%,57% 69.5%,51% 71%,58% 73%,52% 75.5%,59% 77%,
-  53% 79%,60% 81.5%,54% 83%,61% 85%,55% 87.5%,62% 89%,56% 91%,63% 93.5%,
-  57% 95%,64% 97%,58% 100%,
-  74% 100%,70% 97.5%,76% 95%,71% 93%,77% 91%,72% 88.5%,78% 86%,73% 84%,
-  79% 81.5%,74% 79%,80% 77%,75% 74.5%,81% 72%,76% 70%,82% 67.5%,77% 65%,
-  83% 63%,78% 60.5%,84% 58%,79% 56%,85% 53.5%,80% 51%,86% 49%,81% 46.5%,
-  87% 44%,82% 42%,88% 39.5%,83% 37%,89% 35%,84% 32.5%,90% 30%,85% 28%,
-  91% 25.5%,86% 23%,92% 21%,87% 18.5%,93% 16%,88% 14%,94% 11.5%,89% 9%,
-  95% 7%,90% 4.5%,96% 2%,91% 0%
+50% 0%,
+60% 8%,
+40% 17%,
+65% 26%,
+35% 35%,
+70% 45%,
+30% 55%,
+68% 65%,
+40% 74%,
+60% 84%,
+45% 100%,
+70% 100%,
+55% 84%,
+75% 74%,
+45% 65%,
+80% 55%,
+40% 45%,
+75% 35%,
+50% 26%,
+70% 17%,
+45% 8%,
+55% 0%
 );
 
 filter:
-  drop-shadow(-6px 0 14px rgba(0,0,0,0.75))
-  drop-shadow( 6px 0 10px rgba(0,0,0,0.6))
-  drop-shadow( 0  4px 8px rgba(0,0,0,0.5));
+drop-shadow(-6px 0 14px rgba(0,0,0,0.75))
+drop-shadow(6px 0 10px rgba(0,0,0,0.6));
 }
 
-.torn .tear-edge{
-position:absolute;
-left:33%;
-top:-3%;
-width:32%;
-height:106%;
-pointer-events:none;
-
-background:
-  linear-gradient(
-  90deg,
-  transparent 36%,
-  rgba(255,245,210,0.55) 37.5%,
-  rgba(255,250,220,0.25) 39%,
-  transparent 41%,
-  transparent 57%,
-  rgba(255,245,200,0.2) 58.5%,
-  rgba(255,250,220,0.45) 60%,
-  transparent 62%
-  );
-
-clip-path:polygon(
-  40% 0%,43% 1.5%,38% 3%,44% 5%,37% 7%,43% 9%,39% 11.5%,45% 13%,
-  38% 15.5%,44% 17%,40% 19%,46% 21%,39% 23%,45% 25.5%,40% 27%,47% 29%,
-  41% 31%,48% 33.5%,42% 35%,49% 37%,43% 39.5%,50% 41%,44% 43%,51% 45.5%,
-  45% 47%,52% 49%,46% 51.5%,53% 53%,47% 55%,54% 57.5%,48% 59%,55% 61%,
-  49% 63.5%,56% 65%,50% 67%,57% 69.5%,51% 71%,58% 73%,52% 75.5%,59% 77%,
-  53% 79%,60% 81.5%,54% 83%,61% 85%,55% 87.5%,62% 89%,56% 91%,63% 93.5%,
-  57% 95%,64% 97%,58% 100%,
-  74% 100%,70% 97.5%,76% 95%,71% 93%,77% 91%,72% 88.5%,78% 86%,73% 84%,
-  79% 81.5%,74% 79%,80% 77%,75% 74.5%,81% 72%,76% 70%,82% 67.5%,77% 65%,
-  83% 63%,78% 60.5%,84% 58%,79% 56%,85% 53.5%,80% 51%,86% 49%,81% 46.5%,
-  87% 44%,82% 42%,88% 39.5%,83% 37%,89% 35%,84% 32.5%,90% 30%,85% 28%,
-  91% 25.5%,86% 23%,92% 21%,87% 18.5%,93% 16%,88% 14%,94% 11.5%,89% 9%,
-  95% 7%,90% 4.5%,96% 2%,91% 0%
-);
-}
-
-/* =============================================
-   PÁGINA SANGUE
-   ============================================= */
-
-.blood{ background:#fff; }
+/* Página sangue */
 
 .blood .blood-overlay{
 position:absolute;
 inset:0;
+
 background:
-  radial-gradient(circle at 15% 20%, rgba(120,0,0,0.95) 0 100px, transparent 115px),
-  radial-gradient(circle at 78% 40%, rgba(80,0,0,0.92) 0 140px,  transparent 155px),
-  radial-gradient(circle at 50% 80%, rgba(140,0,0,0.75) 0 90px,  transparent 110px),
-  linear-gradient(to bottom, transparent, rgba(70,0,0,0.08));
+radial-gradient(circle at 15% 20%,
+rgba(120,0,0,0.95) 0 100px,
+transparent 115px),
+
+radial-gradient(circle at 78% 40%,
+rgba(80,0,0,0.92) 0 140px,
+transparent 155px);
+
 mix-blend-mode:multiply;
 pointer-events:none;
 }
 
-.corrupted{ opacity:0.9; letter-spacing:1px; }
-
-/* =============================================
-   PÁGINA GLITCH
-   ============================================= */
+/* Glitch */
 
 .page.glitch{
 background:#080303 !important;
 animation:pagebreak 0.15s infinite alternate;
-pointer-events:none;
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-transform:translateZ(0);
+pointer-events:auto;
 }
 
-.page.glitch::before{
-background:
-  repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 3px,
-    rgba(0,0,0,0.4) 3px,
-    rgba(0,0,0,0.4) 4px
-  ),
-  radial-gradient(
-    ellipse at center,
-    rgba(50,8,8,0.35) 0%,
-    rgba(0,0,0,0.9) 100%
-  );
-background-size:100% 4px, 100% 100%;
-opacity:1;
-animation:scanlines 7s linear infinite;
-}
-
-.page.glitch::after{
-width:100%;
-left:0;
-top:0;
-background:
-  radial-gradient(
-    ellipse at 50% 50%,
-    transparent 25%,
-    rgba(4,0,0,0.65) 70%,
-    rgba(2,0,0,0.92) 100%
-  );
-pointer-events:none;
-}
-
-.page.glitch .chapter{
-color:#9a7860;
-position:relative;
-z-index:2;
-text-shadow:
-  -2px 0 rgba(210,40,40,0.85),
-   2px 0 rgba(40,170,170,0.75);
-animation:
-  textbreak  0.08s infinite alternate,
-  rgbsplit   0.28s steps(1) infinite;
-}
-
+.page.glitch .chapter,
 .page.glitch .content{
-color:#6a5040;
-position:relative;
-z-index:2;
+color:#86685b;
+
 text-shadow:
-  -1.5px 0 rgba(200,30,30,0.7),
-   1.5px 0 rgba(30,160,160,0.6);
-animation:
-  textbreak  0.08s infinite alternate,
-  rgbsplit   0.28s steps(1) infinite;
-}
+-2px 0 rgba(210,40,40,0.85),
+2px 0 rgba(40,170,170,0.75);
 
-.glitch-static{
-position:absolute;
-inset:0;
-z-index:1;
-opacity:0.06;
-background-image:
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-background-size:300px 300px;
-mix-blend-mode:screen;
-animation:staticshift 0.06s steps(1) infinite;
-pointer-events:none;
-}
-
-@keyframes scanlines{
-  from{ background-position:0 0,   0 0; }
-  to  { background-position:0 80px,0 0; }
-}
-
-@keyframes rgbsplit{
-  0%  { text-shadow:-2px 0 rgba(210,40,40,0.85),  2px 0 rgba(40,170,170,0.75); }
-  20% { text-shadow: 3px 0 rgba(210,40,40,0.65), -3px 0 rgba(40,170,170,0.65); }
-  40% { text-shadow:-1px 0 rgba(210,40,40,0.95),  1px 0 rgba(40,170,170,0.85); }
-  60% { text-shadow: 4px 0 rgba(210,40,40,0.5),  -2px 0 rgba(40,170,170,0.7);  }
-  80% { text-shadow:-3px 0 rgba(210,40,40,0.75),  3px 0 rgba(40,170,170,0.6);  }
-  100%{ text-shadow: 2px 0 rgba(210,40,40,0.6),  -4px 0 rgba(40,170,170,0.8);  }
-}
-
-@keyframes staticshift{
-  0%  { transform:translate(0,0);    }
-  25% { transform:translate(-3px,2px); }
-  50% { transform:translate(2px,-2px); }
-  75% { transform:translate(-1px,3px); }
-  100%{ transform:translate(3px,-1px); }
-}
-
-@keyframes pagebreak{
-  0%  { filter:blur(0px);         }
-  25% { filter:blur(0.4px);       }
-  50% { filter:brightness(0.85);  }
-  75% { filter:contrast(1.2);     }
-  100%{ filter:blur(0.25px);      }
+animation:textbreak 0.08s infinite alternate;
 }
 
 @keyframes textbreak{
-  0%  { opacity:1;    }
-  50% { opacity:0.45; }
-  100%{ opacity:1;    }
+0%{opacity:1;}
+50%{opacity:0.5;}
+100%{opacity:1;}
 }
 
-/* =============================================
-   CONTRA-CAPA
-   ============================================= */
+@keyframes pagebreak{
+0%{filter:blur(0px);}
+50%{filter:contrast(1.2);}
+100%{filter:blur(0.3px);}
+}
+
+/* Contra capa */
 
 .back-cover{
 background:
-  linear-gradient(
-  160deg,
-  #1c0e08 0%,
-  #100806 50%,
-  #1a0c07 100%
-  ) !important;
+linear-gradient(
+160deg,
+#1c0e08 0%,
+#100806 50%,
+#1a0c07 100%
+) !important;
+
 display:flex;
-flex-direction:column;
-gap:0;
 justify-content:center;
 align-items:center;
-}
+text-align:center;
 
-.back-cover::before{
-background:
-  repeating-linear-gradient(
-  90deg,
-  rgba(180,180,180,0.07) 0px,
-  rgba(180,180,180,0.07) 2px,
-  transparent 2px,
-  transparent 18px
-  ),
-  radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px) !important;
-background-size:100% 100%, 6px 6px !important;
-mix-blend-mode:screen !important;
-}
-
-.back-cover::after{
-content:'' !important;
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-height:200px;
-background:
-  radial-gradient(ellipse at 25% 120%, rgba(90,25,5,0.95)  0%, transparent 52%),
-  radial-gradient(ellipse at 72% 130%, rgba(70,15,4,0.9)   0%, transparent 48%),
-  radial-gradient(ellipse at 50% 125%, rgba(110,35,6,0.75) 0%, transparent 60%),
-  linear-gradient(to top, rgba(20,5,2,0.8), transparent);
-width:100%;
-pointer-events:none;
-border-radius:0;
+color:#cda979;
 }
 
 .back-inner{
 display:flex;
 flex-direction:column;
+gap:20px;
 align-items:center;
-justify-content:center;
-gap:22px;
-z-index:3;
-position:relative;
-padding:20px;
 }
 
 .back-seal{
 width:170px;
 height:170px;
+
 border-radius:50%;
-border:1.5px solid rgba(160,110,55,0.35);
+
+border:1px solid rgba(160,110,55,0.35);
+
 display:flex;
 align-items:center;
 justify-content:center;
-position:relative;
-box-shadow:
-  0 0 28px rgba(80,30,8,0.5),
-  0 0 60px rgba(40,10,3,0.4),
-  inset 0 0 30px rgba(0,0,0,0.7);
-}
 
-.back-seal::before{
-content:'';
-position:absolute;
-width:148px;
-height:148px;
-border-radius:50%;
-border:1px dashed rgba(140,95,45,0.28);
+box-shadow:
+0 0 28px rgba(80,30,8,0.5),
+inset 0 0 30px rgba(0,0,0,0.7);
 }
 
 .back-seal::after{
 content:'⟁';
+
 font-size:64px;
+font-family:'Cinzel',serif;
+
 color:rgba(160,110,50,0.45);
-text-shadow:
-  0 0 20px rgba(200,130,50,0.25),
-  0 0 50px rgba(150,80,20,0.15);
-font-family:'Cinzel',serif;
-}
-
-.seal-ring{
-position:absolute;
-width:170px;
-height:170px;
-border-radius:50%;
-font-family:'Cinzel',serif;
-font-size:7.5px;
-letter-spacing:3.2px;
-color:rgba(150,105,50,0.5);
-display:flex;
-align-items:flex-start;
-justify-content:center;
-padding-top:8px;
-text-align:center;
-line-height:1;
-}
-
-.back-division{
-font-family:'Cinzel',serif;
-font-size:11px;
-letter-spacing:6px;
-color:rgba(155,110,55,0.6);
-text-align:center;
-text-transform:uppercase;
 }
 
 .back-divider{
 width:140px;
 height:1px;
-background:linear-gradient(
-  to right,
-  transparent,
-  rgba(150,100,45,0.4) 30%,
-  rgba(180,120,55,0.5) 50%,
-  rgba(150,100,45,0.4) 70%,
-  transparent
+
+background:
+linear-gradient(
+to right,
+transparent,
+rgba(180,120,55,0.5),
+transparent
 );
 }
 
-.back-status{
-font-family:'Special Elite',cursive;
-font-size:10px;
-letter-spacing:3px;
-color:rgba(130,65,60,0.75);
-text-align:center;
-text-transform:uppercase;
-}
+/* Botões */
 
-.back-arquivo{
-font-family:'Special Elite',cursive;
-font-size:9px;
+.nav-btn{
+position:fixed;
+bottom:18px;
+
+background:rgba(80,40,15,0.7);
+
+border:1px solid rgba(180,130,60,0.4);
+
+color:#d6c7b9;
+
+font-family:'Cinzel',serif;
+font-size:13px;
 letter-spacing:2px;
-color:rgba(130,100,60,0.45);
-text-align:center;
+
+padding:8px 20px;
+
+cursor:pointer;
+
+z-index:100;
+
+transition:0.2s;
 }
 
-.back-sigils{
-font-size:16px;
-letter-spacing:12px;
-color:rgba(140,100,50,0.38);
-margin-top:4px;
+.nav-btn:hover{
+background:rgba(120,60,20,0.85);
 }
 
-/* =============================================
-   DICA / HINT
-   ============================================= */
+#btn-prev{
+left:calc(50% - 150px);
+}
+
+#btn-next{
+right:calc(50% - 150px);
+}
 
 .hint{
 position:fixed;
-bottom:18px;
+bottom:20px;
+
 color:#d6c7b9;
+
 font-size:12px;
 letter-spacing:2px;
+
 opacity:0.7;
+
 z-index:100;
 }
 
-/* Nav buttons */
-.nav-btn {
-  position: fixed;
-  bottom: 18px;
-  background: rgba(80,40,15,0.7);
-  border: 1px solid rgba(180,130,60,0.4);
-  color: #d6c7b9;
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  letter-spacing: 2px;
-  padding: 8px 20px;
-  cursor: pointer;
-  z-index: 100;
-  transition: background 0.2s;
-}
-.nav-btn:hover { background: rgba(120,60,20,0.85); }
-#btn-prev { left: calc(50% - 130px); }
-#btn-next { right: calc(50% - 130px); }
-
-/* =============================================
-   MOBILE
-   ============================================= */
+/* Mobile */
 
 @media(max-width:900px){
-  #book{
-    width:96vw;
-    height:80vh;
-  }
-  .page{ padding:24px; }
-  .chapter{ font-size:20px; }
-  .content{ font-size:12px; line-height:1.45; }
-  .cover h1{ font-size:34px; }
-  .back-seal{ width:130px; height:130px; }
-  .back-seal::after{ font-size:48px; }
-  .back-seal::before{ width:112px; height:112px; }
-  .seal-ring{ width:130px; height:130px; font-size:6.5px; letter-spacing:2.5px; }
+
+#book{
+width:96vw;
+height:80vh;
+}
+
+.page{
+padding:24px;
+}
+
+.chapter{
+font-size:20px;
+}
+
+.content{
+font-size:12px;
+line-height:1.45;
+}
+
+.cover h1{
+font-size:34px;
+}
+
 }
 
 body{
@@ -653,114 +491,194 @@ user-select:none;
 -webkit-user-select:none;
 }
 
-  </style>
+</style>
 </head>
+
 <body>
 
 <div id="book">
 
-  <!-- CAPA (página 0) -->
-  <div class="page cover">
-    <h1>
+<!-- CAPA -->
+<div class="page cover">
+<h1>
 As Crônicas<br>
 do Herói da Floresta
-    </h1>
-  </div>
+</h1>
+</div>
 
-  <!-- PÁGINA 1 -->
-  <div class="page">
-    <div class="chapter">
-      O herói vem a esse mundo
-      <div class="symbol success">✦ ✦ ✦</div>
-    </div>
-    <div class="content">
-Início aos testes, vamos submeter o herói ao começo de seus testes, as 10 horas em ponto começaremos o seu primeiro ritual de transcendência, o colocamos em quarentena numa sala de duas guias com um zumbi de sangue, após 3 dias o herói finalmente entrou em estado de choque anafilático, consideramos isso quase como uma resistência natural o medo que ele tinha sobre a criatura junto de algo que categorizamos como fascínio, o mesmo teste foi repetido durante o mês com mais algumas criaturas. Esqueleto de lodo 7 dias, anárquico 5 dias e houve um reação inesperada com o contato do existido, quando a mente o herói começou a ser deteriorada pelo conhecimento do outro lado, não houve uma resposta ao enlouquecimento como sugere, o herói ficou completamente maravilhado com oque estava vendo e as taxas de manifestação do outro lado dispararam no setor, Encerramos os teste nesse momento para menores baixas e começaremos no dia seguinte a transcendência.
-    </div>
-  </div>
+<!-- PÁGINA -->
+<div class="page">
+<div class="chapter">
+O herói vem a esse mundo
+<div class="symbol success">✦ ✦ ✦</div>
+</div>
 
-  <!-- PÁGINA 2 -->
-  <div class="page">
-    <div class="chapter">
-      O herói e sua espada sagrada
-      <div class="symbol fail">☩ ☩ ☩</div>
-    </div>
-    <div class="content">
-Após uma tarde de descanso do herói, diminuímos a taxa de tensão dele aí máximo que acumulou após os últimos testes, usaremos um círculo pequeno de transcendência que um dos agentes iron veio aqui e desenhou. Colocamos o herói sobre o círculo e usamos drogas para aumentar a taxa de concentração dele junto de um analgésico para fazê-lo chegar perto do estado de adormecimento, mas, os testes falharam, a pressão da cobaia foi ao extremo contrariando completamente a baixa taxa cardíaca que estava diminuindo cada vez mais do mesmo, retiramos do meio do círculo as pressas, mas já era tarde demais, as veias do heitor estouraram e seus olhos se tornaram líquido negro.
-    </div>
-  </div>
+<div class="content">
+Início aos testes, vamos submeter o herói ao começo de seus testes...
+</div>
+</div>
 
-  <!-- PÁGINA 3 -->
-  <div class="page">
-    <div class="chapter">
-      O herói e a benção divina
-      <div class="symbol success">✦ ✦ ✦</div>
-    </div>
-    <div class="content">
-Após o último acidente, tentamos ao máximo estabiliza-lo, usamos algumas drogas que iron nos disponibilizou, se chama rubra isso deu ao heroi a capacidade de suportar a provação até ser colocado na Câmara sobrevida, seu corpo é apenas um embaranhado de carne com partes do cérebro dele vazando pelo buraco dos olhos, entretanto os sinais vitais dele estão estáveis de alguma forma ele ainda está vivo. 8 horas depois do teste uma ocultista dos irons veio até nisso laboratório, ela invocou sigilos de conhecimento segurando uma barra de ouro e então o corpo do herói foi reconstruído, esses rituais são divinos de se ver funcionando eu diria e com isso temos uma certeza agora não precisamos se preocupar mais com o herói, com uma deusa ao nosso lado se apenas restar um fio de vida no corpo dele, vamos puxar esse fio novamente denovo e denovo até ele ficar completo.
-    </div>
-  </div>
+<!-- PÁGINA -->
+<div class="page">
+<div class="chapter">
+O herói e sua espada sagrada
+<div class="symbol fail">☩ ☩ ☩</div>
+</div>
 
-  <!-- PÁGINA RASGADA -->
-  <div class="page torn">
-    <div class="tear"></div>
-    <div class="tear-edge"></div>
-  </div>
+<div class="content">
+Após uma tarde de descanso do herói...
+</div>
+</div>
 
-  <!-- PÁGINA SANGUE -->
-  <div class="page blood">
-    <div class="blood-overlay"></div>
-    <div class="chapter">
-      O h i demon ataca a v
-      <div class="symbol fail">☩ ☩</div>
-    </div>
-    <div class="content corrupted">
-A contenção do zumbi de sangue de al  A tripas da assistente estão sendo comidas nesse momento eu prec
+<!-- RASGADA -->
+<div class="page torn">
+<div class="tear"></div>
+</div>
 
-Caso encontre esse caderno os experimentos podem con
+<!-- SANGUE -->
+<div class="page blood">
 
-Isso é maravilhoso, o herói está parado na frente do zumbi de sangue, olhando diretamente para ele, isso é lindo de se ver, o zumbi está se curvando de alguma forma e virando sangue novamente.
-    </div>
-  </div>
+<div class="blood-overlay"></div>
 
-  <!-- PÁGINA 6 -->
-  <div class="page">
-    <div class="chapter">
-      O treino do herói
-      <div class="symbol success">✦ ✦ ✦</div>
-    </div>
-    <div class="content">
-Decidimos que não podemos mais continuar com o testes de exposição paranormal por criaturas, a membrana tem estado tão instável nesse local e nossos sistemas de segurança estavam falhando todo santo dia, só sobrou eu e minha esposa após a última quebra, no começo desse dia alguma agentes da iron vieram aqui para levar as criaturas embora.
-    </div>
-  </div>
+<div class="chapter">
+O h i demon ataca a v
+<div class="symbol fail">☩ ☩</div>
+</div>
 
-  <!-- CONTRA-CAPA (última página) -->
-  <div class="page back-cover">
-    <div class="back-inner">
-      <div class="back-seal">
-        <div class="seal-ring">✦ ARCHIVUM TRANSCENDENTIS ✦ SIGILLUM SECRETUM ✦</div>
-      </div>
-      <div class="back-divider"></div>
-      <div class="back-division">Classificado — Iron</div>
-      <div class="back-status">Arquivo Encerrado</div>
-      <div class="back-arquivo">Expedição № 0047-Δ · Câmara Sobrevida</div>
-      <div class="back-sigils">☿ ⟁ ᚱ ☽</div>
-    </div>
-  </div>
+<div class="content">
+A contenção do zumbi de sangue...
+</div>
+
+</div>
+
+<!-- GLITCH -->
+<div class="page glitch">
+
+<div class="chapter">
+ERRO DE TRANSCENDÊNCIA
+</div>
+
+<div class="content">
+SINAIS DA MEMBRANA CORROMPIDOS...
+</div>
+
+</div>
+
+<!-- CONTRA CAPA -->
+<div class="page back-cover">
+
+<div class="back-inner">
+
+<div class="back-seal"></div>
+
+<div class="back-divider"></div>
+
+<div>
+Classificado — Iron
+</div>
+
+<div>
+Arquivo Encerrado
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <button class="nav-btn" id="btn-prev">◀ Anterior</button>
-<span class="hint">Clique nas bordas do livro ou use os botões para virar as páginas</span>
-<button class="nav-btn" id="btn-next">Próxima ▶</button>
 
-<!-- PageFlip from jsDelivr (reliable CDN build) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+<div class="hint">
+Clique nas bordas do livro
+</div>
+
+<button class="nav-btn" id="btn-next">
+Próxima ▶
+</button>
+
+<!-- JQUERY PRIMEIRO -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-  // Turn.js approach — mais simples e mais estável que StPageFlip para HTML puro
-  // Tenta carregar via turn.js; caso falhe, usa PageFlip como fallback
 
-  function initWithPageFlip() {
-    // Fallback: StPageFlip
-    const script = document.createElement('script');
-    script.src = 'https://cdnj
+<!-- TURN.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+const book = $("#book");
+
+/* Inicialização */
+
+book.turn({
+
+width:1100,
+height:720,
+
+autoCenter:true,
+
+elevation:50,
+
+gradients:true,
+
+acceleration:true,
+
+duration:900
+
+});
+
+/* Botões */
+
+$("#btn-next").click(function(){
+book.turn("next");
+});
+
+$("#btn-prev").click(function(){
+book.turn("previous");
+});
+
+/* Teclado */
+
+$(document).keydown(function(e){
+
+if(e.key === "ArrowRight"){
+book.turn("next");
+}
+
+if(e.key === "ArrowLeft"){
+book.turn("previous");
+}
+
+});
+
+/* Responsivo */
+
+function resizeBook(){
+
+if(window.innerWidth < 900){
+
+book.turn(
+"size",
+window.innerWidth * 0.96,
+window.innerHeight * 0.80
+);
+
+}else{
+
+book.turn("size",1100,720);
+
+}
+
+}
+
+resizeBook();
+
+window.addEventListener("resize",resizeBook);
+
+});
+
+</script>
+
+</body>
+</html>
